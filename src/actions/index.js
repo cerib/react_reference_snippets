@@ -11,6 +11,10 @@ if (process.env.NODE_ENV !== "production") {
   clientSecret = process.env.GITHUB_CLIENT_SECRET;
 }
 
+//just checking something out...
+clientID = process.env.REACT_APP_GITHUB_CLIENT_ID;
+clientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+
 const credentials = `client_id=${clientID}&client_secret=${clientSecret}`;
 
 export const fetchUsers = () => async (dispatch) => {
