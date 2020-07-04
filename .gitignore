@@ -26,4 +26,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # default.json with api keys
-config/default.json
+default.json
