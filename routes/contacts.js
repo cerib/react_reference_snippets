@@ -1,12 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
-const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
+const checkReadOnly = require("../middleware/checkReadOnly");
 const getUserId = require("../functions/getUserIdFromReq");
-const User = require("../models/User");
 const Contact = require("../models/Contact");
-const { findOne } = require("../models/User");
 
 // @route   GET /api/contacts
 // @desc    Get all contacts from a user
@@ -28,7 +26,7 @@ router.get("/", auth, async (req, res) => {
 // @access  Private
 router.post(
   "/",
-  [auth, [check("name", "Please enter a name").notEmpty()]],
+  [auth, checkReadOnly, [check("name", "Please enter a name").notEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     // if there are errors
@@ -59,7 +57,7 @@ router.post(
 // @route   PUT /api/contacts/:id
 // @desc    Replace contact
 // @access  Private
-router.put("/:id", auth, async (req, res) => {
+router.put("/:id", [auth, checkReadOnly], async (req, res) => {
   //  what if some random user gets access to the contact id?
   //  I cant just trust the call with the id alone,
   //  I need to check the user id as well, to see if it belongs to the contact
@@ -82,7 +80,7 @@ router.put("/:id", auth, async (req, res) => {
 // @route   DELETE /api/contacts/:id
 // @desc    Delete contact
 // @access  Private
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id", [auth, checkReadOnly], async (req, res) => {
   //  what if some random user gets access to the contact id?
   //  I cant just trust the call with the id alone,
   //  I need to check the user id as well, to see if it belongs to the contact

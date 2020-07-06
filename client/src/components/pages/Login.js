@@ -49,6 +49,14 @@ function Login(props) {
       <h1>
         Account <span className="text-primary">Login</span>
       </h1>
+      <div className="bg-light m-1">
+        <i className="fa fa-info-circle " aria-hidden="true" />{" "}
+        {"Don't want to sign up? Try the read only account! "}
+        <ul className="m-1">
+          <li>Email: example@example.com</li>
+          <li>Password: password</li>
+        </ul>
+      </div>
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
