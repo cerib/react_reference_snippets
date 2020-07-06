@@ -6,3 +6,4 @@ Some small react projects that will help me easily remind myself of stuff I got 
  - Github Finder (With hooks and redux) https://suspicious-bassi-0e2ff1.netlify.app/
  
  - Contact Keeper App (Full stack, with authentication (JWT), hooks, redux, all the goodies) https://shielded-sierra-38952.herokuapp.com/
+   please note that the first load might take around 15 seconds due to Heroku free tier limitations
